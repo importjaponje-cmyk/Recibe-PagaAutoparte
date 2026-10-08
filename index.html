@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recibe y Paga Autopartes — Repuestos para Toyota, Nissan y Mitsubishi</title>
+<meta name="description" content="Repuestos para Toyota, Nissan y Mitsubishi en Colombia. Sin anticipos, pagas contra entrega. Envíos a todo el país.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --hero-bg:url('img/692afb6a5c.webp');--tijera-only-bg:url('img/1dd0e7bb56.webp');--bomba-only-bg:url('img/a8644b1373.webp');
+  --rack-only-bg:url('img/53d8291ff7.webp');
+    --bg-top:#050914;
+    --bg-bottom:#081C4D;
+    --panel:#0B1730;
+    --panel-2:#0E1E42;
+    --line:#1C2E58;
+    --line-bright:#2C4A8C;
+    --blue-500:#2F6FE0;
+    --blue-400:#4E8CF5;
+    --blue-300:#7FADF8;
+    --white:#FFFFFF;
+    --gray:#A9B4C9;
+    --gray-dim:#6C7A99;
+    --yellow:#F4B740;
+    --red-logo:#E03A3A;
+    --radius-lg:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:linear-gradient(180deg,var(--bg-top) 0%, var(--bg-bottom) 55%, var(--bg-top) 100%);
+    color:var(--white);
+    font-family:'Plus Jakarta Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
+    opacity:0.5;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .max{max-width:1400px;margin:0 auto;padding:0 48px;position:relative;z-index:1;}
+  section{position:relative;z-index:1;}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- NAV ---------- */
+  nav.topnav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 48px;display:flex;align-items:center;justify-content:space-between;
+    transition:padding .3s ease, background .3s ease, border-color .3s ease;
+    border-bottom:1px solid transparent;
+  }
+  nav.topnav.scrolled{
+    padding:12px 48px;
+    background:rgba(6,12,26,0.72);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-bottom:1px solid var(--line);
+  }
+  .brand-logo{display:flex;flex-direction:column;line-height:1;}
+  .brand-logo .word{font-weight:800;font-size:19px;letter-spacing:0.01em;}
+  .brand-logo .word span{color:var(--blue-400);}
+  .brand-logo .sub{
+    font-size:9.5px;letter-spacing:0.28em;color:var(--gray-dim);margin-top:4px;font-weight:600;
+    position:relative;padding-bottom:5px;
+  }
+  .brand-logo .sub::after{content:'';position:absolute;left:0;bottom:0;width:26px;height:1.5px;background:var(--red-logo);}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--gray);transition:color .2s ease;}
+  .nav-links a:hover{color:var(--white);}
+  .wa-btn{
+    background:linear-gradient(135deg,var(--blue-400),var(--blue-500));
+    color:#fff;font-weight:700;font-size:13.5px;padding:0 20px;height:44px;border-radius:12px;
+    display:flex;align-items:center;gap:8px;border:none;cursor:pointer;
+    transition:transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease, filter .25s ease;
+  }
+  .wa-btn:hover{transform:scale(1.03);box-shadow:0 8px 28px rgba(79,140,245,0.35);filter:brightness(1.08);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:168px 0 90px;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:center;}
+  .eyebrow-badges{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:22px;}
+  .badge{
+    display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--gray);
+    background:rgba(255,255,255,0.03);border:1px solid var(--line);padding:7px 13px;border-radius:100px;
+  }
+  .badge svg{color:var(--blue-400);flex-shrink:0;}
+  .hero h1{font-size:52px;font-weight:800;line-height:1.1;letter-spacing:-0.01em;}
+  .hero-sub{margin-top:20px;font-size:17px;color:var(--gray);line-height:1.6;max-width:480px;}
+  .hero-sub b{color:var(--white);font-weight:700;}
+  .hero-actions{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--blue-400),var(--blue-500));
+    color:#fff;font-weight:700;font-size:15px;padding:0 30px;height:54px;border-radius:14px;
+    display:flex;align-items:center;gap:10px;border:none;cursor:pointer;
+    transition:transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease, filter .25s ease;
+  }
+  .btn-primary:hover{transform:scale(1.03);box-shadow:0 10px 32px rgba(79,140,245,0.4);filter:brightness(1.08);}
+  .btn-secondary{
+    background:transparent;color:var(--white);font-weight:600;font-size:15px;padding:0 28px;height:54px;
+    border-radius:14px;border:1px solid var(--line-bright);display:flex;align-items:center;gap:10px;
+    cursor:pointer;transition:border-color .25s ease, background .25s ease;
+  }
+  .btn-secondary:hover{background:rgba(79,140,245,0.08);border-color:var(--blue-400);}
+
+  .hero-visual{
+    position:relative;border-radius:var(--radius-lg);background:radial-gradient(ellipse at 52% 48%, rgba(79,140,245,0.13) 0%, transparent 55%),radial-gradient(ellipse at 60% 35%, rgba(47,111,224,0.08) 0%, transparent 45%),radial-gradient(ellipse at 40% 65%, rgba(30,80,180,0.07) 0%, transparent 40%);
+    padding:36px;min-height:540px;display:flex;align-items:center;justify-content:center;
+  }
+  .platform{
+    position:relative;width:100%;max-width:100%;transform:scale(1.20);aspect-ratio:720/510;
+    
+  }
+  .platform svg{width:100%;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,0.5));}
+  .hero-part{filter:drop-shadow(0 12px 24px rgba(0,0,0,0.35));pointer-events:none;}
+
+  /* ---------- BENEFITS STRIP ---------- */
+  .benefits{padding:24px 0 90px;}
+  .benefits-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px 44px;
+  }
+  .benefit{display:flex;align-items:center;gap:16px;}
+  .benefit-icon{
+    width:48px;height:48px;border-radius:50%;background:rgba(79,140,245,0.12);
+    display:flex;align-items:center;justify-content:center;color:var(--blue-400);flex-shrink:0;
+  }
+  .benefit h4{font-size:15px;font-weight:700;margin-bottom:3px;}
+  .benefit p{font-size:13px;color:var(--gray-dim);}
+
+  /* ---------- SECTION HEAD ---------- */
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 52px;}
+  .sec-head .eyebrow{font-size:12px;font-weight:700;letter-spacing:0.16em;color:var(--blue-400);text-transform:uppercase;margin-bottom:14px;}
+  .sec-head h2{font-size:34px;font-weight:800;letter-spacing:-0.01em;}
+  .sec-head p{margin-top:14px;color:var(--gray);font-size:15.5px;line-height:1.6;}
+
+  /* ---------- BRANDS ---------- */
+  .brands{padding:70px 0;}
+  .brands-panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:40px;
+  }
+  .brands-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:0 auto 36px;
+    max-width:90%;align-items:start;
+  }
+  .brand-card{
+    display:block;border-radius:22px;overflow:hidden;position:relative;
+    aspect-ratio:0.63;background:#050B18;
+    box-shadow:0 14px 34px rgba(0,0,0,0.4);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+  }
+  .brand-card img{
+    width:100%;height:100%;display:block;object-fit:cover;object-position:center top;
+    transition:filter .35s ease;
+  }
+  .brand-card::before{
+    content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;z-index:2;
+    background:linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 65%, rgba(255,255,255,0) 100%);
+    transform:skewX(-18deg);
+    transition:left .85s cubic-bezier(.2,.7,.2,1);
+    pointer-events:none;
+  }
+  .brand-card:hover::before{left:130%;}
+  .brand-card::after{
+    content:'';position:absolute;inset:0;border-radius:22px;z-index:3;pointer-events:none;
+    border:1.5px solid rgba(127,173,248,0.28);
+    box-shadow:inset 0 0 0 1px rgba(5,11,24,0.4);
+    transition:border-color .35s ease, box-shadow .35s ease;
+  }
+  .brand-card:hover{
+    transform:scale(1.035) translateY(-4px);
+    box-shadow:0 26px 60px rgba(47,111,224,0.35);
+  }
+  .brand-card:hover::after{
+    border-color:var(--blue-400);
+    box-shadow:inset 0 0 0 1px rgba(79,140,245,0.5), 0 0 22px rgba(79,140,245,0.25);
+  }
+  .brand-card:hover img{filter:brightness(1.08);}
+
+  .brands-strip{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-top:1px solid var(--line);padding-top:32px;
+  }
+  .strip-item{display:flex;align-items:center;gap:14px;}
+  .strip-icon{
+    width:44px;height:44px;border-radius:50%;background:var(--blue-500);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;color:#fff;
+  }
+  .strip-item h4{font-size:14px;font-weight:700;line-height:1.3;}
+
+  /* ---------- CATEGORIES ---------- */
+  .categories{padding:70px 0;}
+  .cat-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:0 auto;
+    max-width:90%;align-items:start;
+  }
+  .cat-tile{
+    display:block;border-radius:22px;overflow:hidden;position:relative;
+    aspect-ratio:0.65;background:#050B18;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 14px 34px rgba(0,0,0,0.4);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
+  }
+  .cat-tile img{
+    width:100%;height:auto;display:block;object-fit:contain;
+    transition:filter .35s ease;
+  }
+  .cat-tile:hover{
+    transform:scale(1.035) translateY(-4px);
+    border-color:var(--blue-400);
+    box-shadow:0 26px 60px rgba(47,111,224,0.35);
+  }
+  .cat-tile:hover img{filter:brightness(1.08);}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how{padding:80px 0;}
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:20px;
+  }
+  .step-line{
+    position:absolute;top:26px;left:12.5%;right:12.5%;height:1.5px;background:var(--line);z-index:0;
+  }
+  .step-line-fill{
+    position:absolute;top:0;left:0;height:100%;width:0%;background:linear-gradient(90deg,var(--blue-500),var(--blue-400));
+    transition:width 1.4s cubic-bezier(.2,.7,.2,1);
+  }
+  .step-line.animate .step-line-fill{width:100%;}
+  .step{position:relative;z-index:1;text-align:center;padding:0 16px;}
+  .step-num{
+    width:52px;height:52px;border-radius:50%;background:var(--panel);border:1.5px solid var(--line-bright);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-weight:800;font-size:16px;
+    color:var(--blue-400);
+  }
+  .step h4{font-size:14.5px;font-weight:700;margin-bottom:6px;}
+  .step p{font-size:12.5px;color:var(--gray-dim);line-height:1.5;max-width:180px;margin:0 auto;}
+
+  /* ---------- PRODUCTS ---------- */
+  .products{padding:70px 0;}
+  .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .prod-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .prod-card:hover{transform:translateY(-4px);border-color:var(--blue-400);}
+  .prod-img{
+    height:175px;background:radial-gradient(circle at 50% 55%, rgba(79,140,245,0.16), transparent 70%);
+    display:flex;align-items:center;justify-content:center;color:var(--blue-300);
+  }
+  .prod-body{padding:18px 18px 20px;}
+  .prod-body h4{font-size:14.5px;font-weight:700;margin-bottom:5px;}
+  .prod-body .compat{font-size:12px;color:var(--gray-dim);margin-bottom:12px;}
+  .prod-price{font-size:15px;font-weight:800;color:var(--white);margin-bottom:14px;}
+  .prod-btn{
+    width:100%;height:42px;border-radius:10px;border:1px solid var(--line-bright);background:transparent;
+    color:#fff;font-weight:600;font-size:13px;cursor:pointer;transition:background .2s ease,border-color .2s ease;
+    display:flex;align-items:center;justify-content:center;text-decoration:none;
+  }
+  .prod-btn:hover{background:rgba(79,140,245,0.1);border-color:var(--blue-400);}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{padding:70px 0;}
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .test-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;
+  }
+  .test-stars{color:var(--yellow);font-size:13px;margin-bottom:14px;letter-spacing:2px;}
+  .test-card p.quote{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:20px;}
+  .test-person{display:flex;align-items:center;gap:12px;}
+  .avatar{
+    width:38px;height:38px;border-radius:50%;background:var(--panel-2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--blue-400);
+  }
+  .test-person h5{font-size:13.5px;font-weight:700;}
+  .test-person span{font-size:11.5px;color:var(--gray-dim);}
+
+  /* ---------- TRUST STATS ---------- */
+  .trust-stats{padding:70px 0 90px;}
+  .stats-panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;
+  }
+  .stat h3{font-size:36px;font-weight:800;color:var(--blue-400);}
+  .stat p{font-size:13px;color:var(--gray-dim);margin-top:8px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:64px 0 32px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+  .footer-brand p{font-size:13.5px;color:var(--gray-dim);margin-top:16px;line-height:1.6;max-width:280px;}
+  .footer-col h5{font-size:13px;font-weight:700;margin-bottom:16px;color:var(--white);}
+  .footer-col a{display:block;font-size:13.5px;color:var(--gray-dim);margin-bottom:11px;transition:color .2s ease;}
+  .footer-col a:hover{color:var(--white);}
+  .social-row{display:flex;gap:10px;margin-top:18px;}
+  .social-row a{
+    width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:flex;
+    align-items:center;justify-content:center;color:var(--gray);
+  }
+  .footer-bottom{
+    border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;
+    font-size:12.5px;color:var(--gray-dim);flex-wrap:wrap;gap:10px;
+  }
+
+  /* ---------- HAMBURGER MENU (mobile) ---------- */
+  .nav-hamburger{
+    display:none;align-items:center;justify-content:center;
+    width:40px;height:40px;border-radius:10px;
+    background:none;border:1px solid rgba(44,74,140,.6);
+    cursor:pointer;color:var(--gray);transition:background .2s,color .2s,border-color .2s;
+  }
+  .nav-hamburger:hover{background:rgba(79,140,245,.1);color:#fff;border-color:var(--blue-400);}
+  .nav-mobile-menu{
+    display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;
+    background:rgba(5,9,20,0.92);backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    flex-direction:column;align-items:center;justify-content:center;gap:24px;
+    opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;
+  }
+  .nav-mobile-menu.open{opacity:1;visibility:visible;}
+  .nav-mobile-menu a{
+    font-size:20px;font-weight:600;color:var(--gray);
+    transition:color .2s;padding:8px 0;
+  }
+  .nav-mobile-menu a:hover{color:var(--white);}
+  .nav-mobile-close{
+    position:absolute;top:20px;right:20px;
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,.05);border:1px solid rgba(44,74,140,.8);
+    display:grid;place-items:center;color:#93A2BC;cursor:pointer;
+    transition:background .2s,color .2s;
+  }
+  .nav-mobile-close:hover{background:rgba(255,255,255,.1);color:#fff;}
+
+  /* ========== TABLET LANDSCAPE / LAPTOP PEQUEÑO (≤1100px) ========== */
+  @media (max-width:1100px){
+    .max{padding:0 32px;}
+    .hero-grid{grid-template-columns:1fr 1fr;gap:40px;}
+    .cat-grid{grid-template-columns:repeat(2,1fr);max-width:100%;}
+    .prod-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+    .test-grid{grid-template-columns:repeat(2,1fr);gap:18px;}
+    .steps{grid-template-columns:repeat(2,1fr);gap:30px;}
+    .step-line{display:none;}
+    .stats-panel{grid-template-columns:repeat(2,1fr);gap:20px;padding:36px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  }
+
+  /* ========== TABLET PORTRAIT (≤860px) ========== */
+  @media (max-width:860px){
+    nav.topnav{padding:16px 24px;}
+    nav.topnav.scrolled{padding:10px 24px;}
+    .nav-links{display:none;}
+    .nav-hamburger{display:flex;}
+    .nav-mobile-menu{display:flex;}
+    .max{padding:0 22px;}
+    .hero{padding:140px 0 70px;}
+    .hero-grid{grid-template-columns:1fr;gap:36px;}
+    .hero h1{font-size:38px;}
+    .hero-sub{max-width:100%;}
+    .hero-visual{min-height:360px;padding:24px;}
+    .platform{transform:scale(1.0);}
+    .benefits-grid{grid-template-columns:1fr;padding:28px 24px;gap:18px;}
+    .brands{padding:50px 0;}
+    .brands-panel{padding:32px 24px;}
+    .brands-grid{max-width:100%;gap:18px;margin-bottom:28px;}
+    .brands-strip{grid-template-columns:1fr;gap:16px;padding-top:24px;}
+    .cat-grid{grid-template-columns:1fr 1fr;gap:16px;}
+    .cat-tile{aspect-ratio:auto;}
+    .test-grid{grid-template-columns:1fr;}
+    .how{padding:50px 0;}
+    .testimonials{padding:50px 0;}
+    .trust-stats{padding:50px 0 60px;}
+    .stats-panel{grid-template-columns:1fr 1fr;gap:16px;padding:32px;}
+    .stat h3{font-size:30px;}
+    footer{padding:48px 0 24px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:28px;margin-bottom:36px;}
+  }
+
+  /* ========== MÓVIL GRANDE (≤640px) ========== */
+  @media (max-width:640px){
+    .hero{padding:120px 0 50px;}
+    .hero-grid{gap:28px;}
+    .hero h1{font-size:32px;}
+    .hero-sub{font-size:15px;}
+    .hero-actions{flex-direction:column;gap:10px;}
+    .hero-actions .btn-primary,
+    .hero-actions .btn-secondary{width:100%;justify-content:center;height:50px;}
+    .hero-visual{min-height:300px;padding:16px;}
+    .platform{transform:scale(0.95);}
+    .eyebrow-badges{gap:10px;}
+    .badge{font-size:11px;padding:5px 10px;}
+    .brands-grid{grid-template-columns:1fr 1fr;gap:14px;}
+    .brand-card{aspect-ratio:0.7;border-radius:16px;}
+    .cat-grid{grid-template-columns:1fr 1fr;gap:14px;}
+    .cat-tile{aspect-ratio:auto;border-radius:16px;}
+    .cat-drawer-btn{height:40px;font-size:12px;margin-top:8px;border-radius:10px;}
+    .prod-grid{grid-template-columns:1fr 1fr;gap:12px;}
+    .prod-img{height:140px;}
+    .prod-body{padding:14px 14px 16px;}
+    .prod-body h4{font-size:13px;}
+    .prod-price{font-size:14px;margin-bottom:10px;}
+    .sec-head h2{font-size:26px;}
+    .sec-head p{font-size:14px;}
+    .steps{grid-template-columns:1fr 1fr;gap:20px;}
+    .step p{font-size:11.5px;}
+    .test-card{padding:22px;}
+    .test-card p.quote{font-size:13px;}
+    .stats-panel{grid-template-columns:1fr 1fr;gap:14px;padding:24px 20px;}
+    .stat h3{font-size:26px;}
+    .stat p{font-size:12px;}
+    .footer-grid{grid-template-columns:1fr;gap:24px;}
+    .footer-bottom{flex-direction:column;align-items:center;text-align:center;}
+    .wa-btn{padding:0 16px;height:40px;font-size:12.5px;}
+  }
+
+  /* ========== MÓVIL PEQUEÑO (≤420px) ========== */
+  @media (max-width:420px){
+    nav.topnav{padding:12px 16px;}
+    nav.topnav.scrolled{padding:8px 16px;}
+    .brand-logo .word{font-size:17px;}
+    .max{padding:0 16px;}
+    .hero{padding:110px 0 40px;}
+    .hero h1{font-size:27px;}
+    .hero-sub{font-size:14px;}
+    .hero-visual{min-height:240px;padding:12px;}
+    .platform{transform:scale(0.8);}
+    .hero-part{filter:drop-shadow(0 6px 12px rgba(0,0,0,0.35));}
+    .btn-primary,.btn-secondary{font-size:14px;height:48px;border-radius:12px;}
+    .brands-panel{padding:20px 14px;}
+    .brands-grid{grid-template-columns:1fr 1fr;gap:10px;}
+    .brand-card{border-radius:14px;}
+    .cat-grid{grid-template-columns:1fr 1fr;gap:10px;}
+    .cat-tile{aspect-ratio:auto;border-radius:14px;}
+    .cat-drawer-btn{height:36px;font-size:11px;gap:5px;}
+    .prod-grid{grid-template-columns:1fr;gap:14px;}
+    .prod-img{height:160px;}
+    .prod-body{padding:16px;}
+    .prod-body h4{font-size:14px;}
+    .prod-btn{height:40px;font-size:12.5px;}
+    .sec-head h2{font-size:23px;}
+    .benefits-grid{padding:20px 16px;gap:16px;}
+    .benefit-icon{width:40px;height:40px;}
+    .benefit h4{font-size:13px;}
+    .benefit p{font-size:12px;}
+    .steps{grid-template-columns:1fr;gap:20px;}
+    .step-num{width:40px;height:40px;font-size:16px;}
+    .how h2{font-size:23px;}
+    .stats-panel{grid-template-columns:1fr;gap:16px;padding:24px 16px;}
+    .stat h3{font-size:28px;}
+    .test-card{padding:18px;}
+    footer{padding:36px 0 20px;}
+    .footer-col h5{font-size:12px;margin-bottom:12px;}
+    .footer-col a{font-size:12.5px;}
+    .wa-btn{padding:0 14px;height:38px;font-size:11.5px;border-radius:10px;}
+  }
+<style id="ryp-drawer-css">
+/* ══ OVERLAY ══════════════════════════════════════════════════════════ */
+.ryp-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(3,7,18,.65);
+  backdrop-filter:blur(7px) saturate(120%);
+  -webkit-backdrop-filter:blur(7px) saturate(120%);
+  opacity:0;visibility:hidden;
+  transition:opacity .35s ease,visibility .35s ease;
+  cursor:pointer;
+}
+.ryp-overlay.open{opacity:1;visibility:visible;}
+/* ══ DRAWER ═══════════════════════════════════════════════════════════ */
+.ryp-drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:201;
+  width:40%;min-width:380px;max-width:640px;
+  background:linear-gradient(160deg,#0B1730 0%,#091426 55%,#06101E 100%);
+  border-left:1px solid rgba(46,65,102,.6);
+  border-radius:24px 0 0 24px;
+  box-shadow:-20px 0 80px rgba(0,0,0,.55),inset 1px 0 0 rgba(127,173,248,.04);
+  transform:translateX(100%);opacity:.3;
+  transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .35s cubic-bezier(.16,1,.3,1);
+  display:flex;flex-direction:column;overflow:hidden;
+  will-change:transform,opacity;pointer-events:none;
+}
+.ryp-drawer.open{transform:translateX(0);opacity:1;pointer-events:all;}
+.ryp-drawer.open *{visibility:visible;}
+/* ══ SCROLL BODY ══════════════════════════════════════════════════════ */
+.ryp-body{
+  flex:1;overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:thin;scrollbar-color:rgba(46,65,102,.9) transparent;
+  scroll-behavior:smooth;overscroll-behavior:contain;
+}
+.ryp-body::-webkit-scrollbar{width:3px;}
+.ryp-body::-webkit-scrollbar-thumb{background:rgba(46,65,102,.9);border-radius:3px;}
+/* ══ CLOSE ════════════════════════════════════════════════════════════ */
+.ryp-close{
+  position:absolute;top:16px;right:18px;z-index:10;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid rgba(44,74,140,.8);
+  display:grid;place-items:center;color:#93A2BC;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s,transform .2s;
+}
+.ryp-close:hover{background:rgba(255,255,255,.1);color:#fff;
+  border-color:rgba(79,140,245,.5);transform:rotate(90deg);}
+/* ══ IMAGE HERO ═══════════════════════════════════════════════════════ */
+.ryp-img{
+  position:relative;height:clamp(200px,38%,300px);
+  background:radial-gradient(ellipse at 50% 60%,#EEF2F9 0%,#DCE4F0 55%,#C4CFE0 100%);
+  display:grid;place-items:center;overflow:hidden;flex:none;
+}
+.ryp-img::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:40px;
+  background:linear-gradient(to bottom,transparent,rgba(11,23,48,.4));pointer-events:none;
+}
+.ryp-img img{
+  width:72%;height:72%;object-fit:contain;max-width:72%;max-height:72%;
+  filter:drop-shadow(0 10px 20px rgba(5,11,24,.28));
+  position:absolute;top:calc(50% - 10px);left:50%;
+  transform-origin:center center;will-change:transform;
+  animation:ryp-spin-bob 35s linear infinite;
+}
+@keyframes ryp-spin-bob{
+  0%  {transform:translate(-50%,-50%) rotate(0deg)   translateY(0px);}
+  25% {transform:translate(-50%,-50%) rotate(90deg)  translateY(-5px);}
+  50% {transform:translate(-50%,-50%) rotate(180deg) translateY(0px);}
+  75% {transform:translate(-50%,-50%) rotate(270deg) translateY(-5px);}
+  100%{transform:translate(-50%,-50%) rotate(360deg) translateY(0px);}
+}
+/* Icon hero (for drawers with SVG instead of img) */
+.ryp-icon-hero{
+  position:relative;height:clamp(160px,30%,240px);
+  background:radial-gradient(ellipse at 50% 60%,#0D1E45 0%,#081228 100%);
+  display:grid;place-items:center;overflow:hidden;flex:none;
+}
+.ryp-icon-hero svg{color:#4E8CF5;filter:drop-shadow(0 0 20px rgba(79,140,245,.4));}
+/* ══ CONTENT ══════════════════════════════════════════════════════════ */
+.ryp-content{padding:20px 26px 32px;}
+.ryp-titulo{font-size:21px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;
+  animation:ryp-up .4s .04s both;}
+.ryp-badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px;animation:ryp-up .4s .1s both;}
+.ryp-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  height:24px;padding:0 10px;border-radius:100px;
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+}
+.ryp-badge-v{background:rgba(34,197,94,.14);color:#22C55E;border:1px solid rgba(34,197,94,.28);}
+.ryp-badge-p{background:rgba(232,82,63,.14);color:#E8523F;border:1px solid rgba(232,82,63,.28);}
+.ryp-badge-a{background:rgba(79,140,245,.13);color:#7FADF8;border:1px solid rgba(79,140,245,.25);}
+.ryp-lbl{
+  font-size:10px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:#50607A;margin-bottom:9px;
+  display:flex;align-items:center;gap:8px;
+}
+.ryp-lbl::after{content:'';flex:1;height:1px;background:rgba(28,46,88,.7);}
+.ryp-compat{
+  background:rgba(14,30,66,.45);border:1px solid rgba(28,46,88,.75);
+  border-radius:13px;padding:14px 16px;margin-bottom:18px;
+  animation:ryp-up .4s .08s both;
+}
+.ryp-compat-grid{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;}
+.ryp-compat-title{font-size:10.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:#4C6080;margin-bottom:8px;}
+.ryp-compat-item{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:#A9B4C9;margin-bottom:4px;}
+.ryp-compat-item svg{color:#4E8CF5;flex:none;}
+.ryp-years{
+  font-family:'Courier New',monospace;font-size:17px;font-weight:700;
+  color:#7FADF8;letter-spacing:.04em;white-space:nowrap;
+  border:1px solid rgba(79,140,245,.2);border-radius:8px;
+  padding:6px 12px;background:rgba(79,140,245,.07);
+  align-self:center;text-align:center;
+}
+.ryp-years small{display:block;font-size:10px;font-weight:500;
+  letter-spacing:.14em;color:#50607A;margin-bottom:2px;font-family:inherit;}
+.ryp-nota{
+  display:flex;align-items:flex-start;gap:9px;
+  background:rgba(255,138,31,.07);border:1px solid rgba(255,138,31,.18);
+  border-radius:10px;padding:11px 13px;margin-bottom:18px;
+  font-size:13px;color:#D4B896;line-height:1.5;animation:ryp-up .4s .13s both;
+}
+.ryp-nota svg{color:#FF8A1F;flex:none;margin-top:1px;}
+.ryp-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:22px;}
+.ryp-ben{
+  background:rgba(11,23,48,.65);border:1px solid rgba(28,46,88,.7);
+  border-radius:11px;padding:11px 8px;text-align:center;animation:ryp-up .4s both;
+}
+.ryp-ben:nth-child(1){animation-delay:.16s;}
+.ryp-ben:nth-child(2){animation-delay:.22s;}
+.ryp-ben:nth-child(3){animation-delay:.28s;}
+.ryp-ben svg{color:#4E8CF5;margin:0 auto 6px;display:block;}
+.ryp-ben p{font-size:11px;font-weight:600;color:#8A9AB4;line-height:1.3;}
+.ryp-div{height:1px;background:rgba(28,46,88,.7);margin:0 0 20px;}
+.ryp-form-h{font-size:16px;font-weight:700;margin-bottom:14px;}
+.ryp-field{margin-bottom:13px;}
+.ryp-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:#50607A;margin-bottom:5px;}
+.ryp-field label .req{color:#4E8CF5;margin-left:2px;}
+.ryp-lbl-contact{color:#fff;}
+.ryp-inp,.ryp-sel,.ryp-ta{
+  width:100%;background:rgba(6,10,19,.55);
+  border:1px solid rgba(44,74,140,.65);border-radius:10px;
+  color:#fff;font-family:inherit;font-size:14px;
+  transition:border-color .2s,box-shadow .2s,background .2s;
+  -webkit-appearance:none;appearance:none;outline:none;
+}
+.ryp-inp{height:44px;padding:0 13px;}
+.ryp-sel{height:44px;padding:0 34px 0 13px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' fill='none' stroke='%2393A2BC' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;}
+.ryp-ta{padding:11px 13px;resize:vertical;min-height:74px;max-height:150px;line-height:1.5;}
+.ryp-inp::placeholder,.ryp-ta::placeholder{color:#3D5070;}
+.ryp-inp:hover,.ryp-sel:hover,.ryp-ta:hover{border-color:rgba(79,140,245,.45);background:rgba(11,23,48,.65);}
+.ryp-inp:focus,.ryp-sel:focus,.ryp-ta:focus{
+  border-color:#4E8CF5;
+  box-shadow:0 0 0 3px rgba(79,140,245,.14),0 0 14px rgba(79,140,245,.07);
+  background:rgba(14,30,66,.38);}
+.ryp-inp.err,.ryp-sel.err,.ryp-ta.err{border-color:rgba(232,82,63,.55);box-shadow:0 0 0 3px rgba(232,82,63,.09);}
+.ryp-err{display:none;align-items:center;gap:5px;font-size:11.5px;color:#E8523F;margin-top:4px;}
+.ryp-err.on{display:flex;}
+.ryp-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.ryp-cta{
+  width:100%;height:52px;border-radius:13px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#4E8CF5 0%,#2F6FE0 100%);
+  color:#fff;font-family:inherit;font-size:15.5px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  letter-spacing:.02em;margin-top:18px;
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,filter .25s;
+}
+.ryp-cta:hover{transform:scale(1.03);box-shadow:0 10px 30px rgba(47,111,224,.42);filter:brightness(1.08);}
+.ryp-cta:active{transform:scale(.99);}
+/* Parts list (category drawers) */
+.ryp-parts-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+.ryp-part-chip{
+  background:rgba(14,30,66,.6);border:1px solid rgba(44,74,140,.5);
+  border-radius:8px;padding:7px 12px;font-size:13px;color:#9CACC4;
+  display:flex;align-items:center;gap:6px;
+}
+.ryp-part-chip svg{color:#4E8CF5;flex:none;}
+/* Category drawer button */
+.cat-tile-wrap{display:flex;flex-direction:column;}
+.cat-drawer-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:10px;height:46px;
+  border-radius:13px;border:1px solid rgba(44,74,140,.65);
+  background:rgba(11,23,48,.7);color:#7FADF8;
+  font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.cat-drawer-btn:hover{background:rgba(79,140,245,.15);border-color:rgba(79,140,245,.5);color:#fff;}
+@keyframes ryp-up{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@media (max-width:960px){.ryp-drawer{width:58%;min-width:340px;}}
+@media (max-width:600px){
+  .ryp-drawer{width:100%;min-width:unset;border-radius:0;border-left:none;}
+  .ryp-row{grid-template-columns:1fr;}
+  .ryp-compat-grid{grid-template-columns:1fr;gap:10px;}
+  .ryp-benefits{gap:7px;}
+  .ryp-ben p{font-size:10.5px;}
+  .ryp-content{padding:16px 18px 28px;}
+  .ryp-cta{font-size:15px;}
+}
+@keyframes float-egr{
+  0%,100%{transform:translateY(0px) rotate(0deg);}
+  50%{transform:translateY(-6px) rotate(0.4deg);}
+}
+@keyframes float-culata{
+  0%,100%{transform:translateY(0px);}
+  50%{transform:translateY(-7px);}
+}
+@keyframes float-cremallera{
+  0%,100%{transform:translateY(0px) rotate(0deg);}
+  50%{transform:translateY(-6px) rotate(-0.3deg);}
+}
+@keyframes float-tijeras{
+  0%,100%{transform:translateY(0px) rotate(0deg);}
+  50%{transform:translateY(-5px) rotate(0.3deg);}
+}
+@keyframes float-bomba{
+  0%,100%{transform:translateY(0px);}
+  50%{transform:translateY(-6px);}
+}
+
+
+
+  /* ---------- NAV SEARCH ---------- */
+  .nav-search{position:relative;display:flex;align-items:center;margin-right:10px;}
+  .nav-search-btn{
+    background:none;border:none;cursor:pointer;color:var(--gray);
+    width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    transition:color .2s ease, background .2s ease;flex-shrink:0;
+  }
+  .nav-search-btn:hover{color:var(--white);background:rgba(255,255,255,0.07);}
+  .nav-search-panel{
+    position:absolute;right:0;top:calc(100% + 10px);
+    background:var(--panel);border:1.5px solid var(--blue-400);border-radius:14px;
+    width:300px;max-width:calc(100vw - 32px);
+    box-shadow:0 8px 32px rgba(0,0,0,0.55);
+    z-index:300;
+    animation:searchOpen .18s cubic-bezier(.2,.8,.2,1);
+    transform-origin:right top;
+  }
+  @keyframes searchOpen{from{opacity:0;transform:scaleY(.85);}to{opacity:1;transform:scaleY(1);}}
+  .nav-search-head{
+    display:flex;align-items:center;gap:10px;padding:0 14px;height:46px;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-search-head svg{color:var(--gray-dim);flex-shrink:0;}
+  .nav-search-inp{
+    flex:1;background:none;border:none;outline:none;
+    font-family:inherit;font-size:14px;font-weight:500;color:var(--white);
+  }
+  .nav-search-inp::placeholder{color:var(--gray-dim);}
+  .nav-search-close{
+    background:none;border:none;cursor:pointer;color:var(--gray-dim);
+    font-size:18px;line-height:1;padding:2px 4px;transition:color .15s;flex-shrink:0;
+  }
+  .nav-search-close:hover{color:var(--white);}
+  .nav-search-results{max-height:300px;overflow-y:auto;border-radius:0 0 12px 12px;}
+  .sri{
+    display:flex;align-items:center;gap:12px;padding:11px 16px;
+    cursor:pointer;text-decoration:none;color:var(--white);
+    border-bottom:1px solid rgba(28,46,88,.6);
+    transition:background .15s;
+  }
+  .sri:last-child{border-bottom:none;}
+  .sri:hover{background:rgba(79,140,245,0.12);}
+  .sri-icon{
+    width:32px;height:32px;border-radius:8px;background:rgba(79,140,245,.12);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .sri-icon svg{color:var(--blue-400);}
+  .sri-info{flex:1;min-width:0;}
+  .sri-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sri-meta{font-size:11px;color:var(--gray-dim);margin-top:2px;}
+  .sri-arr{color:var(--gray-dim);}
+  .sri-empty{padding:20px 16px;text-align:center;color:var(--gray-dim);font-size:13px;}
+  .nav-search-count{
+    padding:7px 16px;font-size:11px;color:var(--gray-dim);
+    border-top:1px solid var(--line);text-align:center;
+  }
+  @media(max-width:640px){
+    .nav-search-panel{
+      position:fixed;left:12px;right:12px;width:auto;
+      top:auto;margin-top:8px;
+    }
+  }
+
+
+
+</style>
+
+</head>
+<body>
+
+<nav class="topnav" id="nav">
+  <div class="brand-logo">
+    <div class="word">RECIBE <span>Y PAGA</span></div>
+    <div class="sub">AUTOPARTES</div>
+  </div>
+  <div class="nav-links">
+    <a href="#inicio">Inicio</a>
+    <a href="#categorias">Categorías</a>
+    <a href="#marcas">Marcas</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="nav-search" id="navSearch">
+    <button class="nav-search-btn" id="navSearchBtn" aria-label="Buscar repuesto" title="Buscar repuesto">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </button>
+    <div class="nav-search-panel" id="navSearchPanel" hidden>
+      <div class="nav-search-head">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="nav-search-inp" id="searchInp" type="search" placeholder="Buscar repuesto…" autocomplete="off" spellcheck="false">
+        <button class="nav-search-close" id="navSearchClose" aria-label="Cerrar">&#x2715;</button>
+      </div>
+      <div class="nav-search-results" id="searchResults"></div>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menú">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+  </button>
+  <a href="https://wa.me/573107612210?text=Hola%2C%20quiero%20cotizar%20un%20repuesto%20para%20mi%20veh%C3%ADculo." target="_blank" rel="noopener" class="wa-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.44-4.38-1.2l-.31-.19-3 .79.8-2.93-.2-.3A7.94 7.94 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+    Cotizar por WhatsApp
+  </a>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="max hero-grid">
+    <div>
+      <h1>Repuestos para <span style="color:#6EA8F7">Toyota</span>, <span style="color:#6EA8F7">Nissan</span> y <span style="color:#6EA8F7">Mitsubishi</span></h1>
+      <p class="hero-sub">Compra con tranquilidad. <b>Paga únicamente cuando recibas tu pedido.</b> Sin anticipos, sin riesgos, con la calidad que tu vehículo necesita.</p>
+      <div class="hero-actions">
+        <a href="#categorias" class="btn-primary">Ver categorías
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="https://wa.me/573107612210?text=Hola%2C%20quiero%20cotizar%20un%20repuesto%20para%20mi%20veh%C3%ADculo." target="_blank" rel="noopener" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.44-4.38-1.2l-.31-.19-3 .79.8-2.93-.2-.3A7.94 7.94 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+          Cotizar por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="platform">
+        <img class="hero-part hero-part-culata" src="img/da38654d70.webp" alt="culata" style="position:absolute;left:71.2%;top:3.5%;width:13.3%;animation:float-culata 11s ease-in-out 0.8s infinite;">
+        <img class="hero-part hero-part-egr" src="img/af4965be1f.webp" alt="egr" style="position:absolute;left:11.1%;top:9.2%;width:24.3%;animation:float-egr 9.5s ease-in-out 0s infinite;">
+        <img class="hero-part hero-part-cremallera" src="img/8d0d77aabb.webp" alt="cremallera" style="position:absolute;left:36.5%;top:25.5%;width:28.5%;animation:float-cremallera 10s ease-in-out 1.2s infinite;">
+        <img class="hero-part hero-part-tijeras" src="img/ebfeed4b37.webp" alt="tijeras" style="position:absolute;left:7.9%;top:55.5%;width:22.8%;animation:float-tijeras 12s ease-in-out 0.3s infinite;">
+        <img class="hero-part hero-part-bomba" src="img/4b48060b99.webp" alt="bomba" style="position:absolute;left:69.3%;top:61.6%;width:25.7%;animation:float-bomba 10.5s ease-in-out 0.9s infinite;">
+      
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits reveal">
+  <div class="max">
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
+        <div><h4>Compra segura sin anticipos</h4><p>No pagas nada hasta recibir tu pedido.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="15" height="10" rx="1"/><path d="M16 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div>
+        <div><h4>Pago contra entrega</h4><p>Pagas directamente al mensajero.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></div>
+        <div><h4>Envíos a toda Colombia</h4><p>Cobertura nacional puerta a puerta.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brands" id="marcas">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Marcas</div>
+      <h2>Repuestos para lo que te mueve</h2>
+      <p>Envíos contra entrega a toda Colombia, para las tres marcas más confiables del país.</p>
+    </div>
+    <div class="brands-panel reveal">
+      <div class="brands-grid">
+
+        <a href="toyota.html" class="brand-card" aria-label="Ver repuestos Toyota">
+          <img src="img/e61b01730f.webp" alt="Repuestos para Toyota — Calidad que te mueve" loading="lazy">
+        </a>
+
+        <a href="mitsubishi.html" class="brand-card" aria-label="Ver repuestos Mitsubishi">
+          <img src="img/866ac8119a.webp" alt="Repuestos para Mitsubishi — Desempeño sin límites" loading="lazy">
+        </a>
+
+        <a href="nissan.html" class="brand-card" aria-label="Ver repuestos Nissan">
+          <img src="img/4f1bdf7e35.webp" alt="Repuestos para Nissan — Innovación que te impulsa" loading="lazy">
+        </a>
+
+      </div>
+
+      <div class="brands-strip">
+        <div class="strip-item">
+          <div class="strip-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+          <h4>Envíos a<br>toda Colombia</h4>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
+          <h4>Compra segura<br>sin anticipos</h4>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L6 21l6-3 6 3-2.5-8.5"/></svg></div>
+          <h4>Repuestos de calidad<br>garantizada</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="categorias">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Categorías</div>
+      <h2>Encuentra tu repuesto por sistema</h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-tile-wrap">
+        <a href="partesdemotor.html" class="cat-tile reveal" aria-label="Ver repuestos de partes de motor">
+          <img src="img/566a6a4184.webp" alt="Partes de Motor" loading="lazy">
+        </a>
+        <button type="button" class="cat-drawer-btn reveal" onclick="rypAbrir('cat0')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Ver repuestos disponibles</button>
+      </div>
+      <div class="cat-tile-wrap">
+        <a href="suspensiones.html" class="cat-tile reveal" aria-label="Ver repuestos de suspensiones">
+          <img src="img/7dec84ceb0.webp" alt="Suspensiones" loading="lazy">
+        </a>
+        <button type="button" class="cat-drawer-btn reveal" onclick="rypAbrir('cat1')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Ver repuestos disponibles</button>
+      </div>
+      <div class="cat-tile-wrap">
+        <a href="miscelanea.html" class="cat-tile reveal" aria-label="Ver repuestos de MISCELANEA">
+          <img src="img/67406bf5ea.webp" alt="Miscelánea" loading="lazy">
+        </a>
+        <button type="button" class="cat-drawer-btn reveal" onclick="rypAbrir('cat2')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Ver repuestos disponibles</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="como-funciona">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Proceso</div>
+      <h2>¿Cómo funciona?</h2>
+    </div>
+    <div class="steps reveal" id="stepsWrap">
+      <div class="step-line" id="stepLine"><div class="step-line-fill"></div></div>
+      <div class="step"><div class="step-num">1</div><h4>Solicita tu repuesto</h4><p>Escríbenos o navega el catálogo por marca y categoría.</p></div>
+      <div class="step"><div class="step-num">2</div><h4>Confirmamos disponibilidad</h4><p>Verificamos stock y compatibilidad con tu vehículo.</p></div>
+      <div class="step"><div class="step-num">3</div><h4>Despachamos el pedido</h4><p>Envío a toda Colombia con seguimiento.</p></div>
+      <div class="step"><div class="step-num">4</div><h4>Pagas cuando lo recibes</h4><p>Sin anticipos. Pagas al mensajero, contra entrega.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="products">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Destacados</div>
+      <h2>Repuestos más solicitados</h2>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img style="max-height:94%;max-width:94%;object-fit:contain;" src="img/b4c5ed9aae.webp" alt="Culata completa para Toyota" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <h4>Culata completa</h4>
+          <p class="compat">Toyota</p>
+          <button type="button" class="prod-btn" onclick="rypAbrir('toyota5')" aria-haspopup="dialog">Cotizar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img style="max-height:94%;max-width:94%;object-fit:contain;" src="img/e095c41859.webp" alt="Caja de dirección para Toyota" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <h4>Caja de dirección</h4>
+          <p class="compat">Toyota</p>
+          <button type="button" class="prod-btn" onclick="rypAbrir('toyota6')" aria-haspopup="dialog">Cotizar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img style="max-height:94%;max-width:94%;object-fit:contain;" src="img/578a2e2770.webp" alt="Válvula EGR para Nissan" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <h4>Válvula EGR</h4>
+          <p class="compat">Nissan</p>
+          <button type="button" class="prod-btn" onclick="rypAbrir('nissan2')" aria-haspopup="dialog">Cotizar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img style="max-height:94%;max-width:94%;object-fit:contain;" src="img/ae0dab4123.webp" alt="Alternador para Nissan" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <h4>Alternador</h4>
+          <p class="compat">Nissan</p>
+          <button type="button" class="prod-btn" onclick="rypAbrir('nissan0')" aria-haspopup="dialog">Cotizar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="nosotros">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Testimonios</div>
+      <h2>Clientes que ya compraron con confianza</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="quote">Pedí el amortiguador para mi Nissan y solo pagué cuando el mensajero lo entregó en la puerta de mi casa. Cero riesgo.</p>
+        <div class="test-person"><div class="avatar">JR</div><div><h5>Javier Ramírez</h5><span>Medellín</span></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="quote">Al principio dudaba por ser una compra por internet, pero el pago contra entrega me dio toda la confianza para comprar.</p>
+        <div class="test-person"><div class="avatar">ML</div><div><h5>Mónica Lozano</h5><span>Bogotá</span></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="quote">Repuesto original para mi Toyota, entregado en 3 días a Cali. Excelente atención por WhatsApp durante todo el proceso.</p>
+        <div class="test-person"><div class="avatar">DC</div><div><h5>Diego Cárdenas</h5><span>Cali</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-stats">
+  <div class="max">
+    <div class="stats-panel reveal">
+      <div class="stat"><h3>+500</h3><p>Clientes atendidos</p></div>
+      <div class="stat"><h3>32</h3><p>Ciudades con envío nacional</p></div>
+      <div class="stat"><h3>100%</h3><p>Pago contra entrega</p></div>
+      <div class="stat"><h3>4.9/5</h3><p>Calificación de garantía y calidad</p></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="max">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-logo"><div class="word">RECIBE <span>Y PAGA</span></div><div class="sub">AUTOPARTES</div></div>
+        <p>Repuestos para Toyota, Nissan y Mitsubishi en Colombia. Compra sin anticipos, paga contra entrega.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/573107612210?text=Hola%2C%20quiero%20cotizar%20un%20repuesto%20para%20mi%20veh%C3%ADculo." target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Enlaces</h5>
+        <a href="#categorias">Categorías</a>
+        <a href="#marcas">Marcas</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#nosotros">Testimonios</a>
+      </div>
+      <div class="footer-col">
+        <h5>Marcas</h5>
+        <a href="https://wa.me/573107612210?text=Hola%2C%20quiero%20cotizar%20repuestos%20para%20mi%20Toyota." target="_blank" rel="noopener">Toyota</a>
+        <a href="https://wa.me/573107612210?text=Hola%2C%20quiero%20cotizar%20repuestos%20para%20mi%20Nissan." target="_blank" rel="noopener">Nissan</a>
+        <a href="https://wa.me/573107612210?text=Hola%2C%20quiero%20cotizar%20repuestos%20para%20mi%20Mitsubishi." target="_blank" rel="noopener">Mitsubishi</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <a href="https://wa.me/573107612210?text=Hola%2C%20quiero%20cotizar%20un%20repuesto%20para%20mi%20veh%C3%ADculo." target="_blank" rel="noopener">WhatsApp: +57 310 7612210</a>
+        <span style="display:block;color:var(--gray-dim);font-size:13.5px;margin-bottom:11px;">Colombia — envíos nacionales</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Recibe y Paga Autopartes. Todos los derechos reservados.</span>
+      <span>Diseñado para compra segura contra entrega en Colombia.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  const stepLine = document.getElementById('stepLine');
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { stepLine.classList.add('animate'); stepObserver.disconnect(); }
+    });
+  }, { threshold: 0.4 });
+  stepObserver.observe(document.getElementById('stepsWrap'));
+
+// ── Buscador global (con tilde-insensibilidad) ────────────
+  (function(){
+const CATALOGO = [
+  {id:'toyota0',name:'Bomba de aceite',brand:'Toyota',brandPage:'toyota.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+  {id:'toyota1',name:'Cinta air-bag',brand:'Toyota',brandPage:'toyota.html',catPage:'miscelanea.html',cat:'Miscelánea'},
+  {id:'toyota2',name:'Bomba de dirección hidráulica',brand:'Toyota',brandPage:'toyota.html',catPage:'suspensiones.html',cat:'Dirección & Suspensión'},
+  {id:'toyota3',name:'Cigüeñal',brand:'Toyota',brandPage:'toyota.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+  {id:'toyota4',name:'Cuerpo de aceleración',brand:'Toyota',brandPage:'toyota.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+  {id:'toyota5',name:'Culata completa',brand:'Toyota',brandPage:'toyota.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+  {id:'toyota6',name:'Caja de dirección',brand:'Toyota',brandPage:'toyota.html',catPage:'suspensiones.html',cat:'Dirección & Suspensión'},
+  {id:'toyota7',name:'Tapa válvula',brand:'Toyota',brandPage:'toyota.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+  {id:'nissan0',name:'Alternador',brand:'Nissan',brandPage:'nissan.html',catPage:'miscelanea.html',cat:'Miscelánea'},
+  {id:'nissan1',name:'Caja de dirección',brand:'Nissan',brandPage:'nissan.html',catPage:'suspensiones.html',cat:'Dirección & Suspensión'},
+  {id:'nissan2',name:'Válvula EGR',brand:'Nissan',brandPage:'nissan.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+  {id:'nissan3',name:'Muñecos',brand:'Nissan',brandPage:'nissan.html',catPage:'suspensiones.html',cat:'Dirección & Suspensión'},
+  {id:'nissan4',name:'Tijeras',brand:'Nissan',brandPage:'nissan.html',catPage:'suspensiones.html',cat:'Dirección & Suspensión'},
+  {id:'nissan5',name:'Culata completa',brand:'Nissan',brandPage:'nissan.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+  {id:'nissan6',name:'Tapa válvula',brand:'Nissan',brandPage:'nissan.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+  {id:'nissan7',name:'Fan clutch',brand:'Nissan',brandPage:'nissan.html',catPage:'miscelanea.html',cat:'Miscelánea'},
+  {id:'mitsubishi0',name:'Tanque auxiliar',brand:'Mitsubishi',brandPage:'mitsubishi.html',catPage:'miscelanea.html',cat:'Miscelánea'},
+  {id:'mitsubishi1',name:'Caja de dirección',brand:'Mitsubishi',brandPage:'mitsubishi.html',catPage:'suspensiones.html',cat:'Dirección & Suspensión'},
+  {id:'mitsubishi2',name:'Amortiguador',brand:'Mitsubishi',brandPage:'mitsubishi.html',catPage:'suspensiones.html',cat:'Dirección & Suspensión'},
+  {id:'mitsubishi3',name:'Sensor ABS',brand:'Mitsubishi',brandPage:'mitsubishi.html',catPage:'miscelanea.html',cat:'Miscelánea'},
+  {id:'mitsubishi4',name:'Bujías',brand:'Mitsubishi',brandPage:'mitsubishi.html',catPage:'miscelanea.html',cat:'Miscelánea'},
+  {id:'mitsubishi5',name:'Aspa ventilador',brand:'Mitsubishi',brandPage:'mitsubishi.html',catPage:'miscelanea.html',cat:'Miscelánea'},
+  {id:'mitsubishi6',name:'Cinta air-bag',brand:'Mitsubishi',brandPage:'mitsubishi.html',catPage:'miscelanea.html',cat:'Miscelánea'},
+  {id:'mitsubishi7',name:'Balibomba',brand:'Mitsubishi',brandPage:'mitsubishi.html',catPage:'partesdemotor.html',cat:'Partes de Motor'},
+];
+    function norm(s){ return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
+    const btn    = document.getElementById('navSearchBtn');
+    const panel  = document.getElementById('navSearchPanel');
+    const inp    = document.getElementById('searchInp');
+    const closeB = document.getElementById('navSearchClose');
+    const resCont= document.getElementById('searchResults');
+    if (!btn) return;
+
+    function renderResults(q){
+      resCont.innerHTML = '';
+      if (!q){ panel.hidden = true; return; }
+      const matches = CATALOGO.filter(p => norm(p.name).includes(q));
+      if (!matches.length){
+        resCont.innerHTML = '<div class="sri-empty">Sin resultados para "' + inp.value.trim() + '"</div>';
+        return;
+      }
+      const grouped = {};
+      matches.forEach(p => {
+        const key = p.name;
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(p);
+      });
+      Object.entries(grouped).forEach(([name, prods]) => {
+        prods.forEach(p => {
+          const a = document.createElement('a');
+          a.className = 'sri';
+          a.href = p.brandPage + '?abrir=' + p.id;
+          a.innerHTML =
+            '<div class="sri-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>' +
+            '<div class="sri-info"><div class="sri-name">' + p.name + '</div><div class="sri-meta">' + p.brand + ' &nbsp;·&nbsp; ' + p.cat + '</div></div>' +
+            '<svg class="sri-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>';
+          resCont.appendChild(a);
+        });
+      });
+      const total = matches.length;
+      const foot = document.createElement('div');
+      foot.className = 'nav-search-count';
+      foot.textContent = total + ' resultado' + (total!==1?'s':'') + ' encontrado' + (total!==1?'s':'');
+      resCont.appendChild(foot);
+    }
+
+    btn.addEventListener('click', function(){
+      panel.hidden = false;
+      inp.focus();
+    });
+    closeB.addEventListener('click', function(){
+      panel.hidden = true; inp.value = ''; resCont.innerHTML = '';
+    });
+    inp.addEventListener('input', function(){
+      const q = norm(this.value.trim());
+      if (!q){ resCont.innerHTML = ''; return; }
+      renderResults(q);
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key==='Escape' && !panel.hidden){ closeB.click(); }
+    });
+    document.addEventListener('click', function(e){
+      const ns = document.getElementById('navSearch');
+      if (!panel.hidden && ns && !ns.contains(e.target)){ closeB.click(); }
+    });
+  })();
+</script>
+
+
+
+<div class="ryp-overlay" id="ov-toyota5"></div>
+<div class="ryp-drawer" id="dr-toyota5" role="dialog" aria-modal="true"
+     aria-label="Detalle: Culata Completa Toyota" data-abierto="false">
+
+  <button class="ryp-close" id="cl-toyota5" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <div class="ryp-body" id="bd-toyota5">
+
+    <!-- Imagen -->
+    <div class="ryp-img">
+      <img style="width:86%;height:86%;max-width:86%;max-height:86%;" src="img/659aa7d553.webp"
+           alt="Culata Completa para Toyota"
+           width="700" height="560" loading="eager">
+    </div>
+
+    <div class="ryp-content">
+
+      <h2 class="ryp-titulo">Culata Completa Toyota</h2>
+
+      <div class="ryp-badges">
+        <span class="ryp-badge ryp-badge-v"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6"/></svg> Disponible</span>
+        <span class="ryp-badge ryp-badge-a">Alterno</span>
+        <span class="ryp-badge ryp-badge-a" style="background:rgba(79,140,245,.1);color:#6C8EC4">Motor</span>
+      </div>
+
+      <div class="ryp-lbl">Compatibilidad</div>
+      <div class="ryp-compat">
+        <div class="ryp-compat-grid">
+          <div>
+            <div class="ryp-compat-title">Compatible con</div>
+            <div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Toyota Hilux</div><div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Toyota Fortuner</div><div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Toyota Prado</div>
+          </div>
+          <div class="ryp-years">
+            <small>Modelos</small>
+            2006 – 2016
+          </div>
+        </div>
+      </div>
+
+      <div class="ryp-nota">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>
+        </svg>
+        Cilindraje: 3.0 diésel. Viene armada con válvulas y árbol de levas. Confirma código de motor.
+      </div>
+
+      <div class="ryp-lbl">Garantías</div>
+      <div class="ryp-benefits">
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+            <path d="M12 2l7.5 3.4v5.2c0 4.5-3.1 7.6-7.5 9.4C7.6 18.2 4.5 15.1 4.5 10.6V5.4z"/>
+            <path d="M9 12.2l2.2 2.2L15.5 10"/>
+          </svg>
+          <p>Pago contra entrega</p>
+        </div>
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+               stroke-linejoin="round">
+            <path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3.5V16h-8z"/>
+            <circle cx="6.5" cy="18" r="1.9"/><circle cx="17.5" cy="18" r="1.9"/>
+          </svg>
+          <p>Envíos a toda Colombia</p>
+        </div>
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+               stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2L15 10"/>
+          </svg>
+          <p>Garantía de calidad</p>
+        </div>
+      </div>
+
+      <div class="ryp-div"></div>
+
+      <p class="ryp-form-h">Solicita tu cotización</p>
+
+      <form id="fm-toyota5" novalidate autocomplete="off">
+
+
+
+
+
+        <div class="ryp-row">
+          <div class="ryp-field">
+            <label>Marca <span class="req">*</span></label>
+            <select class="ryp-sel" id="fm2-toyota5">
+              <option value="">Selecciona</option>
+              <option value="Toyota" selected>Toyota</option><option value="Nissan">Nissan</option><option value="Mitsubishi">Mitsubishi</option>
+            </select>
+            <p class="ryp-err" id="em-toyota5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Selecciona la marca</p>
+          </div>
+          <div class="ryp-field">
+            <label>Año <span class="req">*</span></label>
+            <input class="ryp-inp" id="fa-toyota5" type="number"
+                   placeholder="Ej. 2018" min="1990" max="2026" inputmode="numeric">
+            <p class="ryp-err" id="ea-toyota5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Año inválido (1990–2026)</p>
+          </div>
+        </div>
+
+        <div class="ryp-field">
+          <label>Modelo del vehículo <span class="req">*</span></label>
+          <input class="ryp-inp" id="fmo-toyota5" type="text"
+                 placeholder="Ej. Hilux">
+          <p class="ryp-err" id="emo-toyota5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa el modelo</p>
+        </div>
+
+        <div class="ryp-field">
+            <label>Motor <span style="color:#3D5070;font-weight:400">(opcional)</span></label>
+            <input class="ryp-inp" id="fmo2-toyota5" type="text"
+                   placeholder="Ej. 2.5 diesel">
+          </div>
+
+        <div class="ryp-lbl ryp-lbl-contact">Información de contacto</div>
+
+        <div class="ryp-field">
+          <label>Nombre completo <span class="req">*</span></label>
+          <input class="ryp-inp" id="fn-toyota5" type="text"
+                 placeholder="Tu nombre completo" autocomplete="name">
+          <p class="ryp-err" id="en-toyota5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa tu nombre completo</p>
+        </div>
+
+        <div class="ryp-field">
+            <label>Ciudad <span class="req">*</span></label>
+            <input class="ryp-inp" id="fc-toyota5" type="text"
+                   placeholder="Tu ciudad">
+            <p class="ryp-err" id="ec-toyota5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa tu ciudad</p>
+          </div>
+
+        <div class="ryp-field">
+          <label>WhatsApp <span class="req">*</span></label>
+          <input class="ryp-inp" id="fw-toyota5" type="tel"
+                 placeholder="3XX XXX XXXX" inputmode="numeric" maxlength="12">
+          <p class="ryp-err" id="ew-toyota5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Número inválido (mín. 10 dígitos)</p>
+        </div>
+
+        <div class="ryp-field">
+          <label>Comentarios adicionales</label>
+          <textarea class="ryp-ta" id="fco-toyota5"
+                    placeholder="¿Número de parte? ¿Dudas sobre compatibilidad?"></textarea>
+        </div>
+
+        <button type="submit" class="ryp-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.85c0 1.9.53 3.7 1.45 5.22L2 22l5.06-1.6
+           a9.8 9.8 0 0 0 4.98 1.35c5.44 0 9.84-4.4 9.84-9.85C21.88 6.4 17.48 2 12.04 2m5.7
+           13.9c-.24.67-1.4 1.28-1.93 1.32-.5.04-.97.22-3.27-.68-2.76-1.09-4.5-3.9-4.64
+           -4.08-.13-.18-1.1-1.46-1.1-2.78s.7-1.97.94-2.24a1 1 0 0 1 .72-.34h.51c.17 0
+           .4-.06.62.47.24.57.8 1.98.87 2.12.07.14.12.3.02.48-.1.18-.15.3-.29.46l-.44.5
+           c-.14.14-.29.3-.12.58.17.29.75 1.23 1.6 2 1.1.98 2.03 1.28 2.32 1.42.29.15
+           .46.12.63-.07.17-.2.72-.84.92-1.13.19-.29.38-.24.64-.14.26.09 1.67.79 1.96
+           .93.29.15.48.22.55.34.07.12.07.68-.17 1.34"/>
+</svg>
+          Cotizar por WhatsApp
+        </button>
+
+</form>
+    </div>
+  </div>
+</div>
+
+<!-- DRAWER: Caja de Dirección (Toyota) -->
+<div class="ryp-overlay" id="ov-toyota6"></div>
+<div class="ryp-drawer" id="dr-toyota6" role="dialog" aria-modal="true"
+     aria-label="Detalle: Caja de Dirección Toyota" data-abierto="false">
+
+  <button class="ryp-close" id="cl-toyota6" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <div class="ryp-body" id="bd-toyota6">
+
+    <!-- Imagen -->
+    <div class="ryp-img">
+      <img src="img/03d2027d0d.webp"
+           alt="Caja de Dirección para Toyota"
+           width="700" height="560" loading="eager">
+    </div>
+
+    <div class="ryp-content">
+
+      <h2 class="ryp-titulo">Caja de Dirección Toyota</h2>
+
+      <div class="ryp-badges">
+        <span class="ryp-badge ryp-badge-v"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6"/></svg> Disponible</span>
+        <span class="ryp-badge ryp-badge-a">Alterno</span>
+        <span class="ryp-badge ryp-badge-a" style="background:rgba(79,140,245,.1);color:#6C8EC4">Dirección</span>
+      </div>
+
+      <div class="ryp-lbl">Compatibilidad</div>
+      <div class="ryp-compat">
+        <div class="ryp-compat-grid">
+          <div>
+            <div class="ryp-compat-title">Compatible con</div>
+            <div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Toyota Hilux</div><div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Toyota Fortuner</div>
+          </div>
+          <div class="ryp-years">
+            <small>Modelos</small>
+            2006 – 2015
+          </div>
+        </div>
+      </div>
+
+      <div class="ryp-nota">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>
+        </svg>
+        Confirma si tu vehículo es 4x2 o 4x4 antes de solicitar.
+      </div>
+
+      <div class="ryp-lbl">Garantías</div>
+      <div class="ryp-benefits">
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+            <path d="M12 2l7.5 3.4v5.2c0 4.5-3.1 7.6-7.5 9.4C7.6 18.2 4.5 15.1 4.5 10.6V5.4z"/>
+            <path d="M9 12.2l2.2 2.2L15.5 10"/>
+          </svg>
+          <p>Pago contra entrega</p>
+        </div>
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+               stroke-linejoin="round">
+            <path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3.5V16h-8z"/>
+            <circle cx="6.5" cy="18" r="1.9"/><circle cx="17.5" cy="18" r="1.9"/>
+          </svg>
+          <p>Envíos a toda Colombia</p>
+        </div>
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+               stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2L15 10"/>
+          </svg>
+          <p>Garantía de calidad</p>
+        </div>
+      </div>
+
+      <div class="ryp-div"></div>
+
+      <p class="ryp-form-h">Solicita tu cotización</p>
+
+      <form id="fm-toyota6" novalidate autocomplete="off">
+
+
+
+
+
+        <div class="ryp-row">
+          <div class="ryp-field">
+            <label>Marca <span class="req">*</span></label>
+            <select class="ryp-sel" id="fm2-toyota6">
+              <option value="">Selecciona</option>
+              <option value="Toyota" selected>Toyota</option><option value="Nissan">Nissan</option><option value="Mitsubishi">Mitsubishi</option>
+            </select>
+            <p class="ryp-err" id="em-toyota6"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Selecciona la marca</p>
+          </div>
+          <div class="ryp-field">
+            <label>Año <span class="req">*</span></label>
+            <input class="ryp-inp" id="fa-toyota6" type="number"
+                   placeholder="Ej. 2018" min="1990" max="2026" inputmode="numeric">
+            <p class="ryp-err" id="ea-toyota6"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Año inválido (1990–2026)</p>
+          </div>
+        </div>
+
+        <div class="ryp-field">
+          <label>Modelo del vehículo <span class="req">*</span></label>
+          <input class="ryp-inp" id="fmo-toyota6" type="text"
+                 placeholder="Ej. Hilux">
+          <p class="ryp-err" id="emo-toyota6"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa el modelo</p>
+        </div>
+
+        <div class="ryp-field">
+            <label>Motor <span style="color:#3D5070;font-weight:400">(opcional)</span></label>
+            <input class="ryp-inp" id="fmo2-toyota6" type="text"
+                   placeholder="Ej. 2.5 diesel">
+          </div>
+
+        <div class="ryp-lbl ryp-lbl-contact">Información de contacto</div>
+
+        <div class="ryp-field">
+          <label>Nombre completo <span class="req">*</span></label>
+          <input class="ryp-inp" id="fn-toyota6" type="text"
+                 placeholder="Tu nombre completo" autocomplete="name">
+          <p class="ryp-err" id="en-toyota6"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa tu nombre completo</p>
+        </div>
+
+        <div class="ryp-field">
+            <label>Ciudad <span class="req">*</span></label>
+            <input class="ryp-inp" id="fc-toyota6" type="text"
+                   placeholder="Tu ciudad">
+            <p class="ryp-err" id="ec-toyota6"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa tu ciudad</p>
+          </div>
+
+        <div class="ryp-field">
+          <label>WhatsApp <span class="req">*</span></label>
+          <input class="ryp-inp" id="fw-toyota6" type="tel"
+                 placeholder="3XX XXX XXXX" inputmode="numeric" maxlength="12">
+          <p class="ryp-err" id="ew-toyota6"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Número inválido (mín. 10 dígitos)</p>
+        </div>
+
+        <div class="ryp-field">
+          <label>Comentarios adicionales</label>
+          <textarea class="ryp-ta" id="fco-toyota6"
+                    placeholder="¿Número de parte? ¿Dudas sobre compatibilidad?"></textarea>
+        </div>
+
+        <button type="submit" class="ryp-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.85c0 1.9.53 3.7 1.45 5.22L2 22l5.06-1.6
+           a9.8 9.8 0 0 0 4.98 1.35c5.44 0 9.84-4.4 9.84-9.85C21.88 6.4 17.48 2 12.04 2m5.7
+           13.9c-.24.67-1.4 1.28-1.93 1.32-.5.04-.97.22-3.27-.68-2.76-1.09-4.5-3.9-4.64
+           -4.08-.13-.18-1.1-1.46-1.1-2.78s.7-1.97.94-2.24a1 1 0 0 1 .72-.34h.51c.17 0
+           .4-.06.62.47.24.57.8 1.98.87 2.12.07.14.12.3.02.48-.1.18-.15.3-.29.46l-.44.5
+           c-.14.14-.29.3-.12.58.17.29.75 1.23 1.6 2 1.1.98 2.03 1.28 2.32 1.42.29.15
+           .46.12.63-.07.17-.2.72-.84.92-1.13.19-.29.38-.24.64-.14.26.09 1.67.79 1.96
+           .93.29.15.48.22.55.34.07.12.07.68-.17 1.34"/>
+</svg>
+          Cotizar por WhatsApp
+        </button>
+
+</form>
+    </div>
+  </div>
+</div>
+
+<!-- DRAWER: Tapa Válvula (Toyota) -->
+<div class="ryp-overlay" id="ov-nissan2"></div>
+<div class="ryp-drawer" id="dr-nissan2" role="dialog" aria-modal="true"
+     aria-label="Detalle: Válvula EGR Nissan" data-abierto="false">
+
+  <button class="ryp-close" id="cl-nissan2" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <div class="ryp-body" id="bd-nissan2">
+
+    <!-- Imagen -->
+    <div class="ryp-img">
+      <img src="img/0d08976847.webp"
+           alt="Válvula EGR para Nissan"
+           width="700" height="560" loading="eager">
+    </div>
+
+    <div class="ryp-content">
+
+      <h2 class="ryp-titulo">Válvula EGR Nissan</h2>
+
+      <div class="ryp-badges">
+        <span class="ryp-badge ryp-badge-v"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6"/></svg> Disponible</span>
+        <span class="ryp-badge ryp-badge-a">Alterno</span>
+        <span class="ryp-badge ryp-badge-a" style="background:rgba(79,140,245,.1);color:#6C8EC4">Motor</span>
+      </div>
+
+      <div class="ryp-lbl">Compatibilidad</div>
+      <div class="ryp-compat">
+        <div class="ryp-compat-grid">
+          <div>
+            <div class="ryp-compat-title">Compatible con</div>
+            <div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Nissan NP300</div><div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Renault Alaskan</div>
+          </div>
+          <div class="ryp-years">
+            <small>Modelos</small>
+            2016 – 2024
+          </div>
+        </div>
+      </div>
+
+      <div class="ryp-nota">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>
+        </svg>
+        Cilindraje: 2.5 diésel.
+      </div>
+
+      <div class="ryp-lbl">Garantías</div>
+      <div class="ryp-benefits">
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+            <path d="M12 2l7.5 3.4v5.2c0 4.5-3.1 7.6-7.5 9.4C7.6 18.2 4.5 15.1 4.5 10.6V5.4z"/>
+            <path d="M9 12.2l2.2 2.2L15.5 10"/>
+          </svg>
+          <p>Pago contra entrega</p>
+        </div>
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+               stroke-linejoin="round">
+            <path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3.5V16h-8z"/>
+            <circle cx="6.5" cy="18" r="1.9"/><circle cx="17.5" cy="18" r="1.9"/>
+          </svg>
+          <p>Envíos a toda Colombia</p>
+        </div>
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+               stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2L15 10"/>
+          </svg>
+          <p>Garantía de calidad</p>
+        </div>
+      </div>
+
+      <div class="ryp-div"></div>
+
+      <p class="ryp-form-h">Solicita tu cotización</p>
+
+      <form id="fm-nissan2" novalidate autocomplete="off">
+
+
+
+
+
+        <div class="ryp-row">
+          <div class="ryp-field">
+            <label>Marca <span class="req">*</span></label>
+            <select class="ryp-sel" id="fm2-nissan2">
+              <option value="">Selecciona</option>
+              <option value="Toyota">Toyota</option><option value="Nissan" selected>Nissan</option><option value="Mitsubishi">Mitsubishi</option>
+            </select>
+            <p class="ryp-err" id="em-nissan2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Selecciona la marca</p>
+          </div>
+          <div class="ryp-field">
+            <label>Año <span class="req">*</span></label>
+            <input class="ryp-inp" id="fa-nissan2" type="number"
+                   placeholder="Ej. 2018" min="1990" max="2026" inputmode="numeric">
+            <p class="ryp-err" id="ea-nissan2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Año inválido (1990–2026)</p>
+          </div>
+        </div>
+
+        <div class="ryp-field">
+          <label>Modelo del vehículo <span class="req">*</span></label>
+          <input class="ryp-inp" id="fmo-nissan2" type="text"
+                 placeholder="Ej. Frontier D22">
+          <p class="ryp-err" id="emo-nissan2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa el modelo</p>
+        </div>
+
+        <div class="ryp-field">
+            <label>Motor <span style="color:#3D5070;font-weight:400">(opcional)</span></label>
+            <input class="ryp-inp" id="fmo2-nissan2" type="text"
+                   placeholder="Ej. 2.5 diesel">
+          </div>
+
+        <div class="ryp-lbl ryp-lbl-contact">Información de contacto</div>
+
+        <div class="ryp-field">
+          <label>Nombre completo <span class="req">*</span></label>
+          <input class="ryp-inp" id="fn-nissan2" type="text"
+                 placeholder="Tu nombre completo" autocomplete="name">
+          <p class="ryp-err" id="en-nissan2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa tu nombre completo</p>
+        </div>
+
+        <div class="ryp-field">
+            <label>Ciudad <span class="req">*</span></label>
+            <input class="ryp-inp" id="fc-nissan2" type="text"
+                   placeholder="Tu ciudad">
+            <p class="ryp-err" id="ec-nissan2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa tu ciudad</p>
+          </div>
+
+        <div class="ryp-field">
+          <label>WhatsApp <span class="req">*</span></label>
+          <input class="ryp-inp" id="fw-nissan2" type="tel"
+                 placeholder="3XX XXX XXXX" inputmode="numeric" maxlength="12">
+          <p class="ryp-err" id="ew-nissan2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Número inválido (mín. 10 dígitos)</p>
+        </div>
+
+        <div class="ryp-field">
+          <label>Comentarios adicionales</label>
+          <textarea class="ryp-ta" id="fco-nissan2"
+                    placeholder="¿Número de parte? ¿Dudas sobre compatibilidad?"></textarea>
+        </div>
+
+        <button type="submit" class="ryp-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.85c0 1.9.53 3.7 1.45 5.22L2 22l5.06-1.6
+           a9.8 9.8 0 0 0 4.98 1.35c5.44 0 9.84-4.4 9.84-9.85C21.88 6.4 17.48 2 12.04 2m5.7
+           13.9c-.24.67-1.4 1.28-1.93 1.32-.5.04-.97.22-3.27-.68-2.76-1.09-4.5-3.9-4.64
+           -4.08-.13-.18-1.1-1.46-1.1-2.78s.7-1.97.94-2.24a1 1 0 0 1 .72-.34h.51c.17 0
+           .4-.06.62.47.24.57.8 1.98.87 2.12.07.14.12.3.02.48-.1.18-.15.3-.29.46l-.44.5
+           c-.14.14-.29.3-.12.58.17.29.75 1.23 1.6 2 1.1.98 2.03 1.28 2.32 1.42.29.15
+           .46.12.63-.07.17-.2.72-.84.92-1.13.19-.29.38-.24.64-.14.26.09 1.67.79 1.96
+           .93.29.15.48.22.55.34.07.12.07.68-.17 1.34"/>
+</svg>
+          Cotizar por WhatsApp
+        </button>
+
+</form>
+    </div>
+  </div>
+</div>
+
+<!-- DRAWER: Muñecos de Suspensión (Nissan) -->
+<div class="ryp-overlay" id="ov-nissan0"></div>
+<div class="ryp-drawer" id="dr-nissan0" role="dialog" aria-modal="true"
+     aria-label="Detalle: Alternador Nissan" data-abierto="false">
+
+  <button class="ryp-close" id="cl-nissan0" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <div class="ryp-body" id="bd-nissan0">
+
+    <!-- Imagen -->
+    <div class="ryp-img">
+      <img src="img/25595d8df9.webp"
+           alt="Alternador para Nissan"
+           width="700" height="560" loading="eager">
+    </div>
+
+    <div class="ryp-content">
+
+      <h2 class="ryp-titulo">Alternador Nissan</h2>
+
+      <div class="ryp-badges">
+        <span class="ryp-badge ryp-badge-v"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6"/></svg> Disponible</span>
+        <span class="ryp-badge ryp-badge-a">Alterno</span>
+        <span class="ryp-badge ryp-badge-a" style="background:rgba(79,140,245,.1);color:#6C8EC4">Eléctrico</span>
+      </div>
+
+      <div class="ryp-lbl">Compatibilidad</div>
+      <div class="ryp-compat">
+        <div class="ryp-compat-grid">
+          <div>
+            <div class="ryp-compat-title">Compatible con</div>
+            <div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Nissan Frontier</div><div class="ryp-compat-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15h16v-3l-2-4H6l-2 4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Nissan D22</div>
+          </div>
+          <div class="ryp-years">
+            <small>Modelos</small>
+            2001 – 2009
+          </div>
+        </div>
+      </div>
+
+      <div class="ryp-nota">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>
+        </svg>
+        Cilindraje: 2.4 gasolina.
+      </div>
+
+      <div class="ryp-lbl">Garantías</div>
+      <div class="ryp-benefits">
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+            <path d="M12 2l7.5 3.4v5.2c0 4.5-3.1 7.6-7.5 9.4C7.6 18.2 4.5 15.1 4.5 10.6V5.4z"/>
+            <path d="M9 12.2l2.2 2.2L15.5 10"/>
+          </svg>
+          <p>Pago contra entrega</p>
+        </div>
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+               stroke-linejoin="round">
+            <path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3.5V16h-8z"/>
+            <circle cx="6.5" cy="18" r="1.9"/><circle cx="17.5" cy="18" r="1.9"/>
+          </svg>
+          <p>Envíos a toda Colombia</p>
+        </div>
+        <div class="ryp-ben">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+               stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2L15 10"/>
+          </svg>
+          <p>Garantía de calidad</p>
+        </div>
+      </div>
+
+      <div class="ryp-div"></div>
+
+      <p class="ryp-form-h">Solicita tu cotización</p>
+
+      <form id="fm-nissan0" novalidate autocomplete="off">
+
+
+
+
+
+        <div class="ryp-row">
+          <div class="ryp-field">
+            <label>Marca <span class="req">*</span></label>
+            <select class="ryp-sel" id="fm2-nissan0">
+              <option value="">Selecciona</option>
+              <option value="Toyota">Toyota</option><option value="Nissan" selected>Nissan</option><option value="Mitsubishi">Mitsubishi</option>
+            </select>
+            <p class="ryp-err" id="em-nissan0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Selecciona la marca</p>
+          </div>
+          <div class="ryp-field">
+            <label>Año <span class="req">*</span></label>
+            <input class="ryp-inp" id="fa-nissan0" type="number"
+                   placeholder="Ej. 2018" min="1990" max="2026" inputmode="numeric">
+            <p class="ryp-err" id="ea-nissan0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Año inválido (1990–2026)</p>
+          </div>
+        </div>
+
+        <div class="ryp-field">
+          <label>Modelo del vehículo <span class="req">*</span></label>
+          <input class="ryp-inp" id="fmo-nissan0" type="text"
+                 placeholder="Ej. Frontier D22">
+          <p class="ryp-err" id="emo-nissan0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa el modelo</p>
+        </div>
+
+        <div class="ryp-field">
+            <label>Motor <span style="color:#3D5070;font-weight:400">(opcional)</span></label>
+            <input class="ryp-inp" id="fmo2-nissan0" type="text"
+                   placeholder="Ej. 2.5 diesel">
+          </div>
+
+        <div class="ryp-lbl ryp-lbl-contact">Información de contacto</div>
+
+        <div class="ryp-field">
+          <label>Nombre completo <span class="req">*</span></label>
+          <input class="ryp-inp" id="fn-nissan0" type="text"
+                 placeholder="Tu nombre completo" autocomplete="name">
+          <p class="ryp-err" id="en-nissan0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa tu nombre completo</p>
+        </div>
+
+        <div class="ryp-field">
+            <label>Ciudad <span class="req">*</span></label>
+            <input class="ryp-inp" id="fc-nissan0" type="text"
+                   placeholder="Tu ciudad">
+            <p class="ryp-err" id="ec-nissan0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Ingresa tu ciudad</p>
+          </div>
+
+        <div class="ryp-field">
+          <label>WhatsApp <span class="req">*</span></label>
+          <input class="ryp-inp" id="fw-nissan0" type="tel"
+                 placeholder="3XX XXX XXXX" inputmode="numeric" maxlength="12">
+          <p class="ryp-err" id="ew-nissan0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Número inválido (mín. 10 dígitos)</p>
+        </div>
+
+        <div class="ryp-field">
+          <label>Comentarios adicionales</label>
+          <textarea class="ryp-ta" id="fco-nissan0"
+                    placeholder="¿Número de parte? ¿Dudas sobre compatibilidad?"></textarea>
+        </div>
+
+        <button type="submit" class="ryp-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.85c0 1.9.53 3.7 1.45 5.22L2 22l5.06-1.6
+           a9.8 9.8 0 0 0 4.98 1.35c5.44 0 9.84-4.4 9.84-9.85C21.88 6.4 17.48 2 12.04 2m5.7
+           13.9c-.24.67-1.4 1.28-1.93 1.32-.5.04-.97.22-3.27-.68-2.76-1.09-4.5-3.9-4.64
+           -4.08-.13-.18-1.1-1.46-1.1-2.78s.7-1.97.94-2.24a1 1 0 0 1 .72-.34h.51c.17 0
+           .4-.06.62.47.24.57.8 1.98.87 2.12.07.14.12.3.02.48-.1.18-.15.3-.29.46l-.44.5
+           c-.14.14-.29.3-.12.58.17.29.75 1.23 1.6 2 1.1.98 2.03 1.28 2.32 1.42.29.15
+           .46.12.63-.07.17-.2.72-.84.92-1.13.19-.29.38-.24.64-.14.26.09 1.67.79 1.96
+           .93.29.15.48.22.55.34.07.12.07.68-.17 1.34"/>
+</svg>
+          Cotizar por WhatsApp
+        </button>
+
+</form>
+    </div>
+  </div>
+</div>
+
+<!-- DRAWER: Caja de Dirección (Nissan) -->
+<div class="ryp-overlay" id="ov-cat0"></div>
+<div class="ryp-drawer" id="dr-cat0" role="dialog" aria-modal="true" data-abierto="false">
+  <button class="ryp-close" id="cl-cat0" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="ryp-body" id="bd-cat0">
+    <div class="ryp-content" style="padding-top:52px;">
+      <h2 class="ryp-titulo">Partes de Motor</h2>
+      <p style="font-size:13.5px;color:#8A9AB4;line-height:1.6;margin-bottom:20px;">Repuestos originales y alternativos para el sistema de motor. Toyota, Nissan y Mitsubishi.</p>
+      <div class="ryp-lbl">Repuestos disponibles</div>
+      <div class="ryp-parts-list"><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Culata completa</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Tapa de válvulas</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Bomba de aceite</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Bomba de agua</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Cigüeñal</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Árbol de levas</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Pistones y aros</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Empaquetaduras</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Cuerpo de aceleración</div></div>
+      <div class="ryp-div"></div>
+      <div class="ryp-nota">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Escríbenos por WhatsApp para confirmar stock y precio.
+      </div>
+      <a href="partesdemotor.html" class="ryp-cta" style="text-decoration:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        Ver catálogo completo
+      </a>
+    </div>
+  </div>
+</div>
+<div class="ryp-overlay" id="ov-cat1"></div>
+<div class="ryp-drawer" id="dr-cat1" role="dialog" aria-modal="true" data-abierto="false">
+  <button class="ryp-close" id="cl-cat1" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="ryp-body" id="bd-cat1">
+    <div class="ryp-content" style="padding-top:52px;">
+      <h2 class="ryp-titulo">Suspensiones</h2>
+      <p style="font-size:13.5px;color:#8A9AB4;line-height:1.6;margin-bottom:20px;">Todo para el tren delantero y trasero. Piezas de repuesto para preservar la estabilidad y seguridad de tu vehículo.</p>
+      <div class="ryp-lbl">Repuestos disponibles</div>
+      <div class="ryp-parts-list"><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Brazos de suspensión</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Amortiguadores</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Rótulas</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Terminales</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Bieletas</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Espirales</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Bujes</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Kits de suspensión</div></div>
+      <div class="ryp-div"></div>
+      <div class="ryp-nota">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Escríbenos por WhatsApp para confirmar stock y precio.
+      </div>
+      <a href="suspensiones.html" class="ryp-cta" style="text-decoration:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        Ver catálogo completo
+      </a>
+    </div>
+  </div>
+</div>
+<div class="ryp-overlay" id="ov-cat2"></div>
+<div class="ryp-drawer" id="dr-cat2" role="dialog" aria-modal="true" data-abierto="false">
+  <button class="ryp-close" id="cl-cat2" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="ryp-body" id="bd-cat2">
+    <div class="ryp-content" style="padding-top:52px;">
+      <h2 class="ryp-titulo">Miscelánea</h2>
+      <p style="font-size:13.5px;color:#8A9AB4;line-height:1.6;margin-bottom:20px;">Repuestos eléctricos, de emisiones y accesorios para Toyota, Nissan y Mitsubishi.</p>
+      <div class="ryp-lbl">Repuestos disponibles</div>
+      <div class="ryp-parts-list"><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Válvulas EGR</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Alternadores</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Sensores</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Cinta Air-Bag</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Cuerpos de aceleración</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Correas</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Filtros</div><div class="ryp-part-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Bombas de combustible</div></div>
+      <div class="ryp-div"></div>
+      <div class="ryp-nota">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Escríbenos por WhatsApp para confirmar stock y precio.
+      </div>
+      <a href="miscelanea.html" class="ryp-cta" style="text-decoration:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        Ver catálogo completo
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+/* ════ DRAWER ENGINE — Recibe y Paga Autopartes ════════════════════════ */
+(function(){
+  const TEL = '573107612210';
+  let activeId = null, prevFocus = null;
+  window.rypAbrir = function(id) {
+    if (activeId) rypCerrar(activeId, true);
+    activeId  = id;
+    prevFocus = document.activeElement;
+    const dr = document.getElementById('dr-'+id);
+    const ov = document.getElementById('ov-'+id);
+    const bd = document.getElementById('bd-'+id);
+    ov.classList.add('open');
+    dr.classList.add('open');
+    dr.dataset.abierto = 'true';
+    document.body.style.overflow = 'hidden';
+    bd.scrollTop = 0;
+    setTimeout(() => document.getElementById('cl-'+id)?.focus(), 360);
+    dr.querySelectorAll('.ryp-badges,.ryp-compat,.ryp-nota,.ryp-ben,.ryp-titulo').forEach(el => {
+      const anim = el.style.animation;
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = anim;
+    });
+  };
+  function rypCerrar(id, silent) {
+    const dr = document.getElementById('dr-'+id);
+    const ov = document.getElementById('ov-'+id);
+    if (!dr) return;
+    ov.classList.remove('open');
+    dr.classList.remove('open');
+    dr.dataset.abierto = 'false';
+    document.body.style.overflow = '';
+    if (!silent && prevFocus) prevFocus.focus();
+    activeId = null;
+    limpiar(id);
+  }
+  document.addEventListener('click', e => {
+    const cl = e.target.closest('[id^="cl-"]');
+    if (cl) { rypCerrar(cl.id.slice(3)); return; }
+    const ov = e.target.closest('[id^="ov-"]');
+    if (ov) { rypCerrar(ov.id.slice(3)); return; }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && activeId) rypCerrar(activeId);
+    if (e.key === 'Tab' && activeId) trapFocus(e, activeId);
+  });
+  function trapFocus(e, id) {
+    const dr = document.getElementById('dr-'+id);
+    if (!dr) return;
+    const els = [...dr.querySelectorAll('button,input,select,textarea,[tabindex]:not([tabindex="-1"])')];
+    if (!els.length) return;
+    const first = els[0], last = els[els.length-1];
+    if (e.shiftKey && document.activeElement===first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement===last) { e.preventDefault(); first.focus(); }
+  }
+  function showErr(fid, eid) {
+    const f=document.getElementById(fid), er=document.getElementById(eid);
+    f?.classList.add('err'); er?.classList.add('on');
+  }
+  function clrErr(fid, eid) {
+    const f=document.getElementById(fid), er=document.getElementById(eid);
+    f?.classList.remove('err'); er?.classList.remove('on');
+  }
+  function limpiar(id) {
+    document.getElementById('fm-'+id)?.reset();
+    ['n','w','m','a','mo','c'].forEach(k => { clrErr('f'+k+'-'+id, 'e'+k+'-'+id); });
+    clrErr('fm2-'+id,'em-'+id);
+  }
+  document.addEventListener('input', e => {
+    const f = e.target; if (!f.id) return;
+    if (f.id.startsWith('fw-')) f.value = f.value.replace(/\D/g,'');
+    const match = f.id.match(/^f(\w+)-(.+)$/);
+    if (match) clrErr(f.id, 'e'+match[1]+'-'+match[2]);
+  });
+  document.addEventListener('change', e => {
+    const f = e.target; if (!f.id) return;
+    const match = f.id.match(/^f(\w+)-(.+)$/);
+    if (match) clrErr(f.id, 'e'+match[1]+'-'+match[2]);
+  });
+  document.addEventListener('submit', e => {
+    const fm = e.target.closest('form[id^="fm-"]');
+    if (!fm) return;
+    e.preventDefault();
+    const id = fm.id.slice(3);
+    let ok = true;
+    const v = id => document.getElementById(id)?.value.trim() ?? '';
+    const nombre  = v('fn-'+id);
+    const wa      = v('fw-'+id);
+    const marca   = document.getElementById('fm2-'+id)?.value ?? '';
+    const anio    = v('fa-'+id);
+    const modelo  = v('fmo-'+id);
+    const motor   = v('fmo2-'+id);
+    const ciudad  = v('fc-'+id);
+    const coments = v('fco-'+id);
+    const anioN   = Number(anio);
+    if (!nombre)                        { showErr('fn-'+id,'en-'+id);  ok=false; }
+    if (!wa || wa.length < 10)          { showErr('fw-'+id,'ew-'+id);  ok=false; }
+    if (!marca)                         { showErr('fm2-'+id,'em-'+id); ok=false; }
+    if (!anio||anioN<1990||anioN>2026)  { showErr('fa-'+id,'ea-'+id);  ok=false; }
+    if (!modelo)                        { showErr('fmo-'+id,'emo-'+id);ok=false; }
+    if (!ciudad)                        { showErr('fc-'+id,'ec-'+id);  ok=false; }
+    if (!ok) {
+      const first = fm.querySelector('.ryp-inp.err,.ryp-sel.err,.ryp-ta.err');
+      if (first) first.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    const titulo = document.querySelector('#dr-'+id+' .ryp-titulo')?.textContent?.trim() ?? 'Repuesto';
+    const msg =
+`Hola, Recibe y Paga Autopartes.
+
+Quiero solicitar una cotización para el siguiente repuesto:
+*${titulo}*
+
+Información del vehículo:
+*Marca:* ${marca}
+*Año:* ${anio}
+*Modelo:* ${modelo}
+*Motor:* ${motor||'No especificado'}
+
+Información de contacto:
+*Nombre:* ${nombre}
+*Ciudad:* ${ciudad}
+*WhatsApp:* ${wa}
+
+*Comentarios:* ${coments||'Ninguno'}
+
+Quedo atento a la cotización.`;
+    window.open('https://wa.me/'+TEL+'?text='+encodeURIComponent(msg),'_blank','noopener');
+  });
+})();
+</script>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Cerrar menú">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="#inicio" onclick="document.getElementById('mobileMenu').classList.remove('open')">Inicio</a>
+  <a href="#categorias" onclick="document.getElementById('mobileMenu').classList.remove('open')">Categorías</a>
+  <a href="#marcas" onclick="document.getElementById('mobileMenu').classList.remove('open')">Marcas</a>
+  <a href="#como-funciona" onclick="document.getElementById('mobileMenu').classList.remove('open')">Cómo funciona</a>
+  <a href="#nosotros" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosotros</a>
+  <a href="#contacto" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contacto</a>
+</div>
+
+</body>
+</html>
