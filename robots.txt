@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://recibeypaga-autopartes.vercel.app/sitemap.xml
